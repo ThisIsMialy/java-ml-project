@@ -1,5 +1,6 @@
 # java-ml-project
 Machine Learning to recognize handwritten digits with Support Vector Machine
+[Vanilla JAVA, no Machine Learning or Mathematics Libraries]
 
 ## Description
 The data is  [Optical Recognition of Handwritten Digits Data Set](https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits "Optical Recognition of Handwritten Digits Data Set")
