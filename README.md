@@ -9,6 +9,31 @@ processed and generated into an input matrix of 8x8 where each element is an int
 Solution:  **Multi-class Support Vector Machine** using the "one-against-all" method
 Kernel: **Radial Basis Function**
 Optimization: **SMO Algorithm** based on Platt, 1998
+
+<img width="473" height="141" alt="image" src="https://github.com/user-attachments/assets/4d06d536-5385-4594-ae41-688476872a27" />
+
+#### Kernel Trick 
+The issue with RBF is it gets very complicated quickly since it tackles an infinite hyperplane. Kernel Trick calculates the similarities between 2 vectors without plotting the vectors on this infinite hyperplane. Using this idea, it is possible to calculate the similarities between the support vectors and a given input X. This will output a value 
+
+<img width="484" height="67" alt="image" src="https://github.com/user-attachments/assets/0e55ab14-7c9e-452c-a65a-15ced6f372d6" />
+
+Values x and y are two points of the same amounts of dimensions and ||x – y|| is their Euclidian distance. 
+The value of Gamma is dependant of the number of dimensions/features each data point has. This was mentioned in Vapnik’s (Cortes and Vapnik, 1995) experiment with a hand-written digit recognition as well. When using the RBF Kernel, they set their standard deviation at 0.75, as gamma is inversely proportional to variance, gamma is calculated as 
+
+
+<img width="518" height="174" alt="image" src="https://github.com/user-attachments/assets/c3d1b3db-e0ce-4f52-8a3b-4d99f2de873f" />
+
+#### Optimization
+To optimize finding the Lagrange Multiplier for the support vectors, the SMO algorithm (Platt, 1998) optimize the input data to calculate the best support vectors and their respective alpha values.
+SMO requires 2 Hyperparameters:
+C – Soft Margin Penalty Parameter
+The higher the value, the smaller the margin of error accepted. 
+Tolerance (Epsilon) – Slack variable for the accuracy
+
+#### Multi-class SVM
+The dataset has 10 different classes which are numbers 0 to 9. Each input data therefore needs to be correctly classified in either one of them. Since each SVM is only capable of computing the similarity of a data input to a class/target it was trained on, there should an SVM for each class and test the data input against each of those SVMs. This is called the “One-against-all” method where each input is tested against all trained SVMs to find the best output.
+
+
 ## Baseline on UCI website
 Nearest Neighbour (k =1) = 98%
 Support Vector Classification = 97.607% (mean) and 98.275% (max)
@@ -19,6 +44,17 @@ Default:
 **RBF Gamma = 0.001**
 ## Test results
 Mean accuracy = 98.4835% in 3.08 minutes
+
+
+<img width="796" height="202" alt="image" src="https://github.com/user-attachments/assets/cd5229d9-ed52-4f05-8d96-a89ca02c5ce2" />
+
+<img width="804" height="200" alt="image" src="https://github.com/user-attachments/assets/37ea6a2a-a142-4e3f-b3f4-11b4662f3f50" />
+
+<img width="766" height="106" alt="image" src="https://github.com/user-attachments/assets/e9177835-6314-4fc7-8697-965b54fe097c" />
+
+
+
+
 # Reference list
 archive.ics.uci.edu. (n.d.). UCI Machine Learning Repository. [online] Available at:
 https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits
